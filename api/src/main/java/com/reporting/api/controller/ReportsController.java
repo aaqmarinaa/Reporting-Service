@@ -33,7 +33,7 @@ public class ReportsController {
         return reportsRepository.findById(reportId)
                 .orElseThrow(() -> new ResourceNotFoundException("laporan", "id_laporan", reportId));
     }
-    // Update a Note
+    // Update a report
     @PutMapping("/reports/{id_laporan}")
     public Reports updateReport(@PathVariable(value = "id_laporan") Long reportId,
                                 @Valid @RequestBody Reports reportDetails) {
@@ -46,7 +46,7 @@ public class ReportsController {
         Reports updatedReport = reportsRepository.save(reports);
         return updatedReport;
     }
-    // Delete a Note
+    // Delete a report
     @DeleteMapping("/reports/{id_laporan}")
     public ResponseEntity<?> deleteReport(@PathVariable(value = "id_laporan") Long reportId) {
         Reports reports = reportsRepository.findById(reportId)

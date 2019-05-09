@@ -17,23 +17,23 @@ public class DetailsController {
     @Autowired
     DetailsRepository detailsRepository;
 
-    // Get All Reports
+    // Get All Details
     @GetMapping("/details")
     public List<Details> getAllReports() {
         return detailsRepository.findAll();
     }
-    // Create a new Report
+    // Create a new Details
     @PostMapping("/details")
     public Details createReport(@Valid @RequestBody Details detail) {
         return detailsRepository.save(detail);
     }
-    // Get 1 Report
+    // Get 1 Details
     @GetMapping("/details/{id_detail}")
     public Details getDetailById(@PathVariable(value = "id_detail") Long detailId) {
         return detailsRepository.findById(detailId)
                 .orElseThrow(() -> new ResourceNotFoundException("detail_laporan", "id_detail", detailId));
     }
-    // Update a Note
+    // Update a Details
     @PutMapping("/details/{id_detail}")
     public Details updateDetail(@PathVariable(value = "id_detail") Long detailId,
                                 @Valid @RequestBody Details reportDetails) {
@@ -47,7 +47,7 @@ public class DetailsController {
         Details updatedDetail = detailsRepository.save(details);
         return updatedDetail;
     }
-    // Delete a Note
+    // Delete a Details
     @DeleteMapping("/details/{id_detail}")
     public ResponseEntity<?> deleteDetail(@PathVariable(value = "id_detail") Long detailId) {
         Details details = detailsRepository.findById(detailId)
