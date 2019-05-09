@@ -24,7 +24,7 @@ public class DetailsController {
     }
     // Create a new Details
     @PostMapping("/details")
-    public Details createReport(@Valid @RequestBody Details detail) {
+    public Details createDetail(@Valid @RequestBody Details detail) {
         return detailsRepository.save(detail);
     }
     // Get 1 Details
