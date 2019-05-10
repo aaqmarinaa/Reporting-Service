@@ -21,7 +21,7 @@ public class Reports implements Serializable {
     private Long id_laporan;
 
     @NotBlank
-    private Date tgl_laporan;
+    private String tgl_laporan;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -41,11 +41,11 @@ public class Reports implements Serializable {
     	this.id_laporan = id_laporan;
     }
     
-    public Date getTgl_laporan(){
+    public String getTgl_laporan(){
     	return tgl_laporan;
     }
     
-    public void setTgl_laporan(Date tgl_laporan) {
+    public void setTgl_laporan(String tgl_laporan) {
     	this.tgl_laporan = tgl_laporan;
     }
     

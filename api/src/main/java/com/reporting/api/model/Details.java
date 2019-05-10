@@ -6,6 +6,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -27,7 +28,7 @@ public class Details implements Serializable {
     private String nama_menu;
 
     @NotBlank
-    private int jumlah_terjual;
+    private String jumlah_terjual;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -63,11 +64,11 @@ public class Details implements Serializable {
     	this.nama_menu = nama_menu;
     }
     
-    public int getJumlah_terjual(){
+    public String getJumlah_terjual(){
     	return jumlah_terjual;
     }
     
-    public void setJumlah_terjual(int jumlah_terjual) {
+    public void setJumlah_terjual(String jumlah_terjual) {
     	this.jumlah_terjual = jumlah_terjual;
     }
     
