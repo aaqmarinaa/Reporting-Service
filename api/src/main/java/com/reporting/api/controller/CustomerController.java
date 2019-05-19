@@ -36,16 +36,16 @@ public class CustomerController {
     }
     
     // Update a report
-    @PutMapping("/reports/{id_report}")
+    @PutMapping("/customers/{id_lap_cust}")
     public Customer updateCustReport(@PathVariable(value = "id_lap_cust") Long custId,
-                                @Valid @RequestBody Customer reportCustDetails) {
+                                @Valid @RequestBody Customer custReports) {
 
-    	Customer customers = customerRepository.findById(custId)
+        Customer customer = customerRepository.findById(custId)
                 .orElseThrow(() -> new ResourceNotFoundException("laporan_customer", "id_lap_cust", custId));
 
-        customers.setTgl_transaksi(Customer.getTgl_transaksi());
+        customer.setTgl_transaksi(custReports.getTgl_transaksi());
 
-        Reports updatedCustReport= customerRepository.save(customers);
-        return updatedCustreport;
+        Customer updatedCustReport = customerRepository.save(customer);
+        return updatedCustReport;
     }
 }
