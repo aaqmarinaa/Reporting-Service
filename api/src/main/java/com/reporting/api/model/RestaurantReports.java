@@ -15,22 +15,19 @@ import java.util.Date;
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"created_at", "updated_at"}, 
         allowGetters = true)
-public class Reports implements Serializable {
+public class RestaurantReports implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_reports;
+    private Long id_lap_rest;
 
     @NotBlank
-    private String role;
+    private Long id_rest;
     
     @NotBlank
-    private Long id_role;
+    private Date tgl_transaksi;
     
     @NotBlank
     private Long id_order;
-    
-    @NotBlank
-    private Date tanggal_laporan;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -42,32 +39,32 @@ public class Reports implements Serializable {
     @LastModifiedDate
     private Date updated_at;
     
-    public Long getId_reports(){
-    	return id_reports;
+    public Long getId_lap_rest(){
+    	return id_lap_rest;
     }
-    public void setId_reports(Long id_reports) {
-    	this.id_reports = id_reports;
-    }
-    
-    public String getRole(){
-    	return role;
-    }
-    public void setRole(String role) {
-    	this.role = role;
+    public void setId_lap_rest(Long id_lap_rest) {
+    	this.id_lap_rest = id_lap_rest;
     }
     
-    public Long getId_role(){
-    	return id_role;
+    public Long getId_rest(){
+    	return id_rest;
     }
-    public void setId_role(Long id_role) {
-    	this.id_role = id_role;
+    public void setId_rest(Long id_rest) {
+    	this.id_rest = id_rest;
+    }
+
+    public Date getTgl_transaksi(){
+    	return tgl_transaksi;
+    }
+    public void setTgl_transaksi(Date tgl_transaksi) {
+    	this.tgl_transaksi = tgl_transaksi;
     }
     
-    public Date getTanggal_laporan(){
-    	return tanggal_laporan;
+    public Long getId_order(){
+    	return id_order;
     }
-    public void setTanggal_laporan(Date tanggal_laporan) {
-    	this.tanggal_laporan = tanggal_laporan;
+    public void setId_order(Long id_order) {
+    	this.id_order = id_order;
     }
     
     public Date getCreated_at() {
