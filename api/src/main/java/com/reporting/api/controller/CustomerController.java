@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/reports")
@@ -18,7 +19,7 @@ public class CustomerController {
 
     // Get All Reports
     @GetMapping("/customers")
-    public List<Customer> getAllReports() {
+    public List<Customer> getAllCustReports() {
         return customerRepository.findAll();
     }
     
@@ -42,8 +43,10 @@ public class CustomerController {
 
         Customer customer = customerRepository.findById(custId)
                 .orElseThrow(() -> new ResourceNotFoundException("laporan_customer", "id_lap_cust", custId));
-
+        
+        customer.setId_cust(custReports.getId_cust());
         customer.setTgl_transaksi(custReports.getTgl_transaksi());
+        customer.setId_order(custReports.getId_order());
 
         Customer updatedCustReport = customerRepository.save(customer);
         return updatedCustReport;

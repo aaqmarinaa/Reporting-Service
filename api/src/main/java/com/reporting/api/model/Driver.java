@@ -20,13 +20,8 @@ public class Driver implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_lap_driver;
 
-    @NotBlank
     private Long id_driver;
-    
-    @NotBlank
     private Date tgl_transaksi;
-    
-    @NotBlank
     private Long id_order;
 
     @Column(nullable = false, updatable = false)

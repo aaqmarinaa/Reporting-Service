@@ -43,7 +43,9 @@ public class RestaurantController {
         Restaurant restaurant = restaurantRepository.findById(restId)
                 .orElseThrow(() -> new ResourceNotFoundException("laporan_restaurant", "id_lap_rest", restId));
 
+        restaurant.setId_rest(restReports.getId_rest());
         restaurant.setTgl_transaksi(restReports.getTgl_transaksi());
+        restaurant.setId_order(restReports.getId_order());
 
         Restaurant updatedRestReport = restaurantRepository.save(restaurant);
         return updatedRestReport;

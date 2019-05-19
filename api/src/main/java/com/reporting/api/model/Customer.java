@@ -20,13 +20,8 @@ public class Customer implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_lap_cust;
 
-    @NotBlank
     private Long id_cust;
-    
-    @NotBlank
     private Date tgl_transaksi;
-    
-    @NotBlank
     private Long id_order;
 
     @Column(nullable = false, updatable = false)

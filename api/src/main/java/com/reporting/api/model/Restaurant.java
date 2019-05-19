@@ -20,13 +20,8 @@ public class Restaurant implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_lap_rest;
 
-    @NotBlank
     private Long id_rest;
-    
-    @NotBlank
     private Date tgl_transaksi;
-    
-    @NotBlank
     private Long id_order;
 
     @Column(nullable = false, updatable = false)

@@ -43,7 +43,10 @@ public class DriverController {
         Driver driver = driverRepository.findById(driverId)
                 .orElseThrow(() -> new ResourceNotFoundException("laporan_driver", "id_lap_driver", driverId));
 
+        driver.setId_driver(driverReports.getId_driver());
         driver.setTgl_transaksi(driverReports.getTgl_transaksi());
+        driver.setId_order(driverReports.getId_order());
+
         
         Driver updatedDriverReport = driverRepository.save(driver);
         return updatedDriverReport;
