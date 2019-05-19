@@ -11,17 +11,17 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "reports")
+@Table(name = "laporan_restaurant")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"created_at", "updated_at"}, 
         allowGetters = true)
-public class CustomerReports implements Serializable {
+public class Restaurant implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_lap_cust;
+    private Long id_lap_rest;
 
     @NotBlank
-    private Long id_cust;
+    private Long id_rest;
     
     @NotBlank
     private Date tgl_transaksi;
@@ -39,18 +39,18 @@ public class CustomerReports implements Serializable {
     @LastModifiedDate
     private Date updated_at;
     
-    public Long getId_lap_cust(){
-    	return id_lap_cust;
+    public Long getId_lap_rest(){
+    	return id_lap_rest;
     }
-    public void setId_lap_cust(Long id_lap_cust) {
-    	this.id_lap_cust = id_lap_cust;
+    public void setId_lap_rest(Long id_lap_rest) {
+    	this.id_lap_rest = id_lap_rest;
     }
     
-    public Long getId_cust(){
-    	return id_cust;
+    public Long getId_rest(){
+    	return id_rest;
     }
-    public void setId_cust(Long id_cust) {
-    	this.id_cust = id_cust;
+    public void setId_rest(Long id_rest) {
+    	this.id_rest = id_rest;
     }
 
     public Date getTgl_transaksi(){
