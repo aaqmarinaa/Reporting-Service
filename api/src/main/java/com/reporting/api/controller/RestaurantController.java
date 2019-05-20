@@ -23,10 +23,22 @@ public class RestaurantController {
     }
     
     // Create a new Report
-//    @PostMapping("/reports")
-//    public Reports createReport(@Valid @RequestBody Reports report) {
-//        return reportsRepository.save(report);
-//    }
+    @PostMapping("/restaurants")
+    public Restaurant createReport(@Valid @RequestBody Restaurant restaurant) {
+        return restaurantRepository.save(restaurant);
+    }
+    
+    // Get 1 Report
+    @GetMapping("/restaurants/getCust")
+    public List<Restaurant> checkCust(@RequestHeader Long id_rest) {
+        return restaurantRepository.ambilRestaurant(id_rest);
+    }
+    
+    // Get Tanggal
+    @GetMapping("/restaurants/getCustTanggal")
+    public List<Restaurant> checkTanggal(@RequestHeader String tgl_transaksi) {
+        return restaurantRepository.ambilTanggal(tgl_transaksi);
+    }
     
     // Get 1 Report
     @GetMapping("/restaurants/{id_lap_rest}")
