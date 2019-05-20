@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
+
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,16 +26,21 @@ public class CustomerController {
     }
     
     // Create a new Report
-//    @PostMapping("/reports")
-//    public Reports createReport(@Valid @RequestBody Reports report) {
-//        return reportsRepository.save(report);
-//    }
+    @PostMapping("/customers")
+    public Customer createReport(@Valid @RequestBody Customer customer) {
+        return customerRepository.save(customer);
+    }
     
     // Get 1 Report
-    @GetMapping("/customers/{id_lap_cust}")
-    public Customer getReportById(@PathVariable(value = "id_lap_cust") Long custId) {
-        return customerRepository.findById(custId)
-                .orElseThrow(() -> new ResourceNotFoundException("laporan_customer", "id_lap_cust", custId));
+    @GetMapping("/customers/getCust")
+    public List<Customer> checkCust(@RequestHeader Long id_cust) {
+        return customerRepository.ambilCustomer(id_cust);
+    }
+    
+    // Get Tanggal
+    @GetMapping("/customers/getCustTanggal")
+    public List<Customer> checkTanggal(@RequestHeader String tgl_transaksi) {
+        return customerRepository.ambilTanggal(tgl_transaksi);
     }
     
     // Update a report
@@ -46,7 +53,7 @@ public class CustomerController {
         
         customer.setId_cust(custReports.getId_cust());
         customer.setTgl_transaksi(custReports.getTgl_transaksi());
-        customer.setId_order(custReports.getId_order());
+        customer.setMenu_id(custReports.getMenu_id());
 
         Customer updatedCustReport = customerRepository.save(customer);
         return updatedCustReport;

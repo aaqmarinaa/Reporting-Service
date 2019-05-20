@@ -21,8 +21,9 @@ public class Customer implements Serializable {
     private Long id_lap_cust;
 
     private Long id_cust;
-    private Date tgl_transaksi;
-    private Long id_order;
+    private Long menu_id;
+    private int total;
+    private String tgl_transaksi;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -47,19 +48,26 @@ public class Customer implements Serializable {
     public void setId_cust(Long id_cust) {
     	this.id_cust = id_cust;
     }
-
-    public Date getTgl_transaksi(){
-    	return tgl_transaksi;
+    
+    public Long getMenu_id(){
+    	return menu_id;
     }
-    public void setTgl_transaksi(Date tgl_transaksi) {
-    	this.tgl_transaksi = tgl_transaksi;
+    public void setMenu_id(Long menu_id) {
+    	this.menu_id = menu_id;
     }
     
-    public Long getId_order(){
-    	return id_order;
+    public int getTotal(){
+    	return total;
     }
-    public void setId_order(Long id_order) {
-    	this.id_order = id_order;
+    public void setTotal(int total) {
+    	this.total = total;
+    }
+
+    public String getTgl_transaksi(){
+    	return tgl_transaksi;
+    }
+    public void setTgl_transaksi(String tgl_transaksi) {
+    	this.tgl_transaksi = tgl_transaksi;
     }
     
     public Date getCreated_at() {
