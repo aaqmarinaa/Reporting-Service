@@ -16,44 +16,59 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`reports` /*!40100 DEFAULT CHARACTER SET
 
 USE `reports`;
 
-/*Table structure for table `detail_laporan` */
+/*Table structure for table `laporan_customer` */
 
-DROP TABLE IF EXISTS `detail_laporan`;
+DROP TABLE IF EXISTS `laporan_customer`;
 
-CREATE TABLE `detail_laporan` (
-  `id_detail` varchar(5) NOT NULL,
-  `id_laporan` varchar(5) DEFAULT NULL,
-  `nama_menu` varchar(50) DEFAULT NULL,
-  `jumlah_terjual` int(11) DEFAULT NULL,
+CREATE TABLE `laporan_customer` (
+  `id_lap_cust` int(11) NOT NULL AUTO_INCREMENT,
+  `id_cust` int(11) DEFAULT NULL,
+  `tgl_transaksi` date DEFAULT NULL,
+  `id_order` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `deleted_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id_detail`),
-  KEY `id_laporan` (`id_laporan`),
-  CONSTRAINT `detail_laporan_ibfk_1` FOREIGN KEY (`id_laporan`) REFERENCES `laporan` (`id_laporan`),
-  CONSTRAINT `id_laporan` FOREIGN KEY (`id_laporan`) REFERENCES `laporan` (`id_laporan`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id_lap_cust`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
-/*Data for the table `detail_laporan` */
+/*Data for the table `laporan_customer` */
 
-insert  into `detail_laporan`(`id_detail`,`id_laporan`,`nama_menu`,`jumlah_terjual`,`created_at`,`updated_at`,`deleted_at`) values ('1','1','Nasi Goreng',50,'2019-05-09 22:13:01',NULL,NULL),('2','1','Nasi Padang',10,'2019-05-09 22:13:35',NULL,NULL),('3','2','Soto',15,'2019-05-10 22:13:50',NULL,NULL),('4','2','Es Teh',17,'2019-05-10 22:14:10',NULL,NULL);
+insert  into `laporan_customer`(`id_lap_cust`,`id_cust`,`tgl_transaksi`,`id_order`,`created_at`,`updated_at`) values (1,1,'2019-05-20',1,NULL,NULL),(2,1,'2019-05-20',2,NULL,NULL),(3,2,'2019-05-20',3,NULL,NULL),(4,3,'2019-05-22',5,NULL,'2019-05-20 04:58:40'),(5,2,'2019-05-21',5,NULL,NULL),(6,1,'2019-05-21',6,NULL,NULL);
 
-/*Table structure for table `laporan` */
+/*Table structure for table `laporan_driver` */
 
-DROP TABLE IF EXISTS `laporan`;
+DROP TABLE IF EXISTS `laporan_driver`;
 
-CREATE TABLE `laporan` (
-  `id_laporan` varchar(5) NOT NULL,
-  `tgl_laporan` date DEFAULT NULL,
+CREATE TABLE `laporan_driver` (
+  `id_lap_driver` int(11) NOT NULL AUTO_INCREMENT,
+  `id_driver` int(11) DEFAULT NULL,
+  `tgl_transaksi` date DEFAULT NULL,
+  `id_order` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `deleted_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id_laporan`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id_lap_driver`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
-/*Data for the table `laporan` */
+/*Data for the table `laporan_driver` */
 
-insert  into `laporan`(`id_laporan`,`tgl_laporan`,`created_at`,`updated_at`,`deleted_at`) values ('1','2019-05-09','2019-05-09 22:13:07',NULL,NULL),('2','2019-05-10','2019-05-10 22:13:11',NULL,NULL);
+insert  into `laporan_driver`(`id_lap_driver`,`id_driver`,`tgl_transaksi`,`id_order`,`created_at`,`updated_at`) values (1,1,'2019-05-20',1,NULL,NULL),(2,1,'2019-05-20',2,NULL,NULL),(3,2,'2019-05-20',3,NULL,NULL),(4,1,'2019-05-20',4,NULL,NULL),(5,3,'2019-05-21',5,NULL,NULL),(6,4,'2019-05-21',6,NULL,NULL);
+
+/*Table structure for table `laporan_restaurant` */
+
+DROP TABLE IF EXISTS `laporan_restaurant`;
+
+CREATE TABLE `laporan_restaurant` (
+  `id_lap_rest` int(11) NOT NULL AUTO_INCREMENT,
+  `id_rest` int(11) DEFAULT NULL,
+  `tgl_transaksi` date DEFAULT NULL,
+  `id_order` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_lap_rest`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+/*Data for the table `laporan_restaurant` */
+
+insert  into `laporan_restaurant`(`id_lap_rest`,`id_rest`,`tgl_transaksi`,`id_order`,`created_at`,`updated_at`) values (1,1,'2019-05-20',1,NULL,NULL),(2,2,'2019-05-20',2,NULL,NULL),(3,3,'2019-05-20',3,NULL,NULL),(4,2,'2019-05-20',4,NULL,NULL),(5,1,'2019-05-21',5,NULL,NULL),(6,3,'2019-05-21',6,NULL,NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
