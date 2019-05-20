@@ -23,7 +23,7 @@ public class Restaurant implements Serializable {
     private Long id_rest;
     private Long menu_id;
     private int total;
-    private Date tgl_transaksi;
+    private String tgl_transaksi;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -63,10 +63,10 @@ public class Restaurant implements Serializable {
     	this.total = total;
     }
 
-    public Date getTgl_transaksi(){
+    public String getTgl_transaksi(){
     	return tgl_transaksi;
     }
-    public void setTgl_transaksi(Date tgl_transaksi) {
+    public void setTgl_transaksi(String tgl_transaksi) {
     	this.tgl_transaksi = tgl_transaksi;
     }
     

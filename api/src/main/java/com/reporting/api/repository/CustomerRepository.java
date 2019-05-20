@@ -17,4 +17,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 		
 		@Query(value = "SELECT * FROM laporan_customer lc WHERE lc.tgl_transaksi = :tgl_transaksi", nativeQuery = true)
 	List<Customer> ambilTanggal(@Param("tgl_transaksi") String tgl_transaksi);
+		
+		@Query(value = "SELECT * FROM laporan_customer lc WHERE lc.tgl_transaksi = :tgl_transaksi AND lc.id_cust = :id_cust", nativeQuery = true)
+	List<Customer> ambilBoth(@Param("tgl_transaksi") String tgl_transaksi, @Param("id_cust") Long id_cust);
 }

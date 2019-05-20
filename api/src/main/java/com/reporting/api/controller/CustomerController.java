@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -41,6 +43,37 @@ public class CustomerController {
     @GetMapping("/customers/getCustTanggal")
     public List<Customer> checkTanggal(@RequestHeader String tgl_transaksi) {
         return customerRepository.ambilTanggal(tgl_transaksi);
+    }
+    
+    @CrossOrigin
+    @GetMapping("/customers/get")
+    public Map<String, Object> checkCustomer(
+    		@RequestParam(name = "id_cust", required = false) Long id_cust, 
+    		@RequestParam(name = "tgl_transaksi", required = false) String tgl_transaksi) {
+    	if (id_cust != null && tgl_transaksi != null) {
+	    	Map<String, Object> result = new HashMap<>();
+			result.put("data", customerRepository.ambilBoth(tgl_transaksi, id_cust));
+			return result;
+//    		return customerRepository.ambilBoth(tgl_transaksi, id_cust);
+    	}
+    	else if (id_cust != null && tgl_transaksi == null) {
+	    	Map<String, Object> result = new HashMap<>();
+			result.put("data", customerRepository.ambilCustomer(id_cust));
+			return result;
+//    		return customerRepository.ambilCustomer(id_cust);
+    	}
+    	else if (id_cust == null && tgl_transaksi != null) {
+	    	Map<String, Object> result = new HashMap<>();
+			result.put("data", customerRepository.ambilTanggal(tgl_transaksi));
+			return result;
+//    		return customerRepository.ambilTanggal(tgl_transaksi);
+    	}
+    	else {
+    		Map<String, Object> result = new HashMap<>();
+    		result.put("data", customerRepository.findAll());
+    		return result;
+//    		return customerRepository.findAll();
+    	}
     }
     
     // Update a report

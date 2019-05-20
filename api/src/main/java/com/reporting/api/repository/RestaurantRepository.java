@@ -16,4 +16,7 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Long> {
 		
 		@Query(value = "SELECT * FROM laporan_restaurant lr WHERE lr.tgl_transaksi = :tgl_transaksi", nativeQuery = true)
 	List<Restaurant> ambilTanggal(@Param("tgl_transaksi") String tgl_transaksi);
+		
+		@Query(value = "SELECT * FROM laporan_restaurant lr WHERE lr.tgl_transaksi = :tgl_transaksi AND lr.id_rest = :id_rest", nativeQuery = true)
+		List<Restaurant> ambilBoth(@Param("tgl_transaksi") String tgl_transaksi, @Param("id_rest") Long id_rest);
 }

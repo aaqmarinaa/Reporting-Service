@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/reports")
@@ -40,18 +43,35 @@ public class RestaurantController {
         return restaurantRepository.ambilTanggal(tgl_transaksi);
     }
     
-    // Get 1 Report
-    @GetMapping("/restaurants/id/{id_lap_rest}")
-    public Restaurant getReportById(@PathVariable(value = "id_lap_rest") Long restId) {
-        return restaurantRepository.findById(restId)
-                .orElseThrow(() -> new ResourceNotFoundException("laporan_restaurant", "id_lap_rest", restId));
-    }
-    
- // Get 1 Report
-    @GetMapping("/restaurants/{id_rest}")
-    public List<Restaurant> getReportById1(@PathVariable(value = "id_rest") Long restId) {
-        return (List<Restaurant>) restaurantRepository.existsById(restId)
-                .orElseThrow(() -> new ResourceNotFoundException("laporan_restaurant", "id_rest", restId));
+    @CrossOrigin
+    @GetMapping("/restaurants/get")
+    public Map<String, Object> checkRestaurant(
+    		@RequestParam(name = "id_rest", required = false) Long id_rest, 
+    		@RequestParam(name = "tgl_transaksi", required = false) String tgl_transaksi) {
+    	if (id_rest != null && tgl_transaksi != null) {
+    		Map<String, Object> result = new HashMap<>();
+			result.put("data", restaurantRepository.ambilBoth(tgl_transaksi, id_rest));
+			return result;
+//    		return restaurantRepository.ambilBoth(tgl_transaksi, id_rest);
+    	}
+    	else if (id_rest != null && tgl_transaksi == null) {
+    		Map<String, Object> result = new HashMap<>();
+			result.put("data", restaurantRepository.ambilRestaurant(id_rest));
+			return result;
+//    		return restaurantRepository.ambilRestaurant(id_rest);
+    	}
+    	else if (id_rest == null && tgl_transaksi != null) {
+    		Map<String, Object> result = new HashMap<>();
+			result.put("data", restaurantRepository.ambilTanggal(tgl_transaksi));
+			return result;
+//    		return restaurantRepository.ambilTanggal(tgl_transaksi);
+    	}
+    	else {
+    		Map<String, Object> result = new HashMap<>();
+			result.put("data", restaurantRepository.findAll());
+			return result;
+//    		return restaurantRepository.findAll();
+    	}
     }
     
     // Update a report
