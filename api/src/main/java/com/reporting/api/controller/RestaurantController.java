@@ -41,10 +41,17 @@ public class RestaurantController {
     }
     
     // Get 1 Report
-    @GetMapping("/restaurants/{id_lap_rest}")
+    @GetMapping("/restaurants/id/{id_lap_rest}")
     public Restaurant getReportById(@PathVariable(value = "id_lap_rest") Long restId) {
         return restaurantRepository.findById(restId)
                 .orElseThrow(() -> new ResourceNotFoundException("laporan_restaurant", "id_lap_rest", restId));
+    }
+    
+ // Get 1 Report
+    @GetMapping("/restaurants/{id_rest}")
+    public List<Restaurant> getReportById1(@PathVariable(value = "id_rest") Long restId) {
+        return (List<Restaurant>) restaurantRepository.existsById(restId)
+                .orElseThrow(() -> new ResourceNotFoundException("laporan_restaurant", "id_rest", restId));
     }
     
     // Update a report
