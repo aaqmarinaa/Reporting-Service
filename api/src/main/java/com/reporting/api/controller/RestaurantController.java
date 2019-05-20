@@ -45,7 +45,7 @@ public class RestaurantController {
 
         restaurant.setId_rest(restReports.getId_rest());
         restaurant.setTgl_transaksi(restReports.getTgl_transaksi());
-        restaurant.setId_order(restReports.getId_order());
+        restaurant.setMenu_id(restReports.getMenu_id());
 
         Restaurant updatedRestReport = restaurantRepository.save(restaurant);
         return updatedRestReport;

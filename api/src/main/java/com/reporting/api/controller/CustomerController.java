@@ -46,7 +46,7 @@ public class CustomerController {
         
         customer.setId_cust(custReports.getId_cust());
         customer.setTgl_transaksi(custReports.getTgl_transaksi());
-        customer.setId_order(custReports.getId_order());
+        customer.setMenu_id(custReports.getMenu_id());
 
         Customer updatedCustReport = customerRepository.save(customer);
         return updatedCustReport;
