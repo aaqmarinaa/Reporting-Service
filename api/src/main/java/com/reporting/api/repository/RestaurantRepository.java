@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RestaurantRepository extends JpaRepository<Restaurant, Long> {
-
+	@Query(value="SELECT * FROM laporan_restaurant lr WHERE lr.id_rest= )
 }
