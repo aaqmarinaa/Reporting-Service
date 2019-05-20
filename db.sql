@@ -25,15 +25,15 @@ CREATE TABLE `laporan_customer` (
   `id_cust` int(11) DEFAULT NULL,
   `menu_id` int(11) DEFAULT NULL,
   `total` int(11) DEFAULT NULL,
-  `tgl_transaksi` datetime DEFAULT NULL,
+  `tgl_transaksi` date DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id_lap_cust`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 /*Data for the table `laporan_customer` */
 
-insert  into `laporan_customer`(`id_lap_cust`,`id_cust`,`menu_id`,`total`,`tgl_transaksi`,`created_at`,`updated_at`) values (1,1,1,NULL,'2019-05-20 00:00:00',NULL,NULL),(2,1,2,NULL,'2019-05-20 00:00:00',NULL,NULL),(3,2,3,NULL,'2019-05-20 00:00:00',NULL,NULL),(4,3,5,NULL,'2019-05-22 00:00:00',NULL,'2019-05-20 04:58:40'),(5,2,5,NULL,'2019-05-21 00:00:00',NULL,NULL),(6,1,6,NULL,'2019-05-21 00:00:00',NULL,NULL);
+insert  into `laporan_customer`(`id_lap_cust`,`id_cust`,`menu_id`,`total`,`tgl_transaksi`,`created_at`,`updated_at`) values (1,1,1,1,'2019-05-20',NULL,NULL),(2,1,2,3,'2019-05-20',NULL,NULL),(3,2,3,2,'2019-05-20',NULL,NULL),(4,3,5,5,'2019-05-22',NULL,'2019-05-20 04:58:40'),(5,2,5,1,'2019-05-21',NULL,NULL),(6,1,6,2,'2019-05-21',NULL,NULL),(7,1,5,100,'2019-05-21','2019-05-20 22:16:12','2019-05-20 22:16:12');
 
 /*Table structure for table `laporan_restaurant` */
 
@@ -52,7 +52,7 @@ CREATE TABLE `laporan_restaurant` (
 
 /*Data for the table `laporan_restaurant` */
 
-insert  into `laporan_restaurant`(`id_lap_rest`,`id_rest`,`menu_id`,`total`,`tgl_transaksi`,`created_at`,`updated_at`) values (1,1,1,NULL,'2019-05-20 00:00:00',NULL,NULL),(2,2,2,NULL,'2019-05-20 00:00:00',NULL,NULL),(3,3,3,NULL,'2019-05-20 00:00:00',NULL,NULL),(4,2,4,NULL,'2019-05-20 00:00:00',NULL,NULL),(5,1,5,NULL,'2019-05-21 00:00:00',NULL,NULL),(6,3,6,NULL,'2019-05-21 00:00:00',NULL,NULL);
+insert  into `laporan_restaurant`(`id_lap_rest`,`id_rest`,`menu_id`,`total`,`tgl_transaksi`,`created_at`,`updated_at`) values (1,1,1,5,'2019-05-20 00:00:00',NULL,NULL),(2,2,2,3,'2019-05-20 00:00:00',NULL,NULL),(3,3,3,1,'2019-05-20 00:00:00',NULL,NULL),(4,2,4,1,'2019-05-20 00:00:00',NULL,NULL),(5,1,5,7,'2019-05-21 00:00:00',NULL,NULL),(6,3,6,5,'2019-05-21 00:00:00',NULL,NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
